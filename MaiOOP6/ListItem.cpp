@@ -1,4 +1,5 @@
 #include "ListItem.hpp"
+#include <iostream>
 
 template <class T>
 ListItem<T>::ListItem(const std::shared_ptr<T> &figure) {
@@ -43,10 +44,11 @@ std::shared_ptr<T> ListItem<T>::GetFigure() const {
 }
 
 template <class T> 
-AllocationBlock<T> ListItem<T>::allocator = AllocationBlock<T>(100);
+AllocationBlock<ListItem<T>> ListItem<T>::allocator = AllocationBlock<ListItem<T>>(100);
 
 template <class T>
-void *ListItem<T>::operator new(size_t size) {
+void* ListItem<T>::operator new(size_t size) {
+    std::cerr << size << " " << sizeof(T) << std::endl;
     return allocator.allocate();
 }
 

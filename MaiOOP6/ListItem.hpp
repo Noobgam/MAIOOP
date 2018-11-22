@@ -17,7 +17,7 @@ public:
     std::shared_ptr<ListItem<T>> GetNext();
     std::shared_ptr<T> GetFigure() const;
     
-    void *operator new(size_t size);
+    void *operator new(size_t sz);
     void operator delete(void *ptr);
     
     virtual ~ListItem() {}
@@ -26,7 +26,7 @@ private:
     std::shared_ptr<T> figure;
     std::shared_ptr<ListItem<T>> next;
     
-    static AllocationBlock<T> allocator;
+    static AllocationBlock<ListItem<T>> allocator;
 };
 
 #endif /* ListItem_hpp */

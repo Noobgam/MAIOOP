@@ -14,10 +14,10 @@ public:
     
     virtual ~AllocationBlock();
 private:
-    char* _data_storage;
-    Array<void*> _free_blocks;
     size_t _count;         
     size_t _free_count;
+    char* _data_storage;
+    Array<void*> _free_blocks;
 };
 
 #endif /* AllocationBlock_hpp */
